@@ -1,20 +1,19 @@
 package com.mycompany.webapp.stock.dao.hibernate;
 
-import java.util.Date;
+import static org.junit.Assert.assertNotNull;
 
-import javax.annotation.Resource;
+import java.util.Date;
 
 import org.apache.log4j.Logger;
 import org.appfuse.dao.BaseDaoTestCase;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.mycompany.webapp.stock.dao.StockDAO;
 import com.mycompany.webapp.stock.domain.Stock;
+
+
 
 
 public class StockDAOHibernateTest extends BaseDaoTestCase{
@@ -34,7 +33,14 @@ public class StockDAOHibernateTest extends BaseDaoTestCase{
 		stock.setLastUpdatedDate(new Date());
 		stock.setQuotePrice(quote);
 		//save the stock quote
-		stockDao.save(stock);	
+		stock = stockDao.save(stock);		
+		
+		Stock returnObj = stockDao.get(stock.getStockId());
+		
+		assertNotNull(returnObj);
+		assertSame(returnObj, stock);
+		
+		
 		
 	}
 	

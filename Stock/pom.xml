@@ -578,7 +578,8 @@
                 <jdbc.artifactId>h2</jdbc.artifactId>
                 <jdbc.version>1.2.134</jdbc.version>
                 <jdbc.driverClassName>org.h2.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:h2:/tmp/${db.name};MVCC=TRUE</jdbc.url>
+                <jdbc.url>jdbc:h2:/tmp/${db.name};MVCC=TRUE</jdbc.url> 
+                 <!-- <jdbc.url>jdbc:h2:tcp://localhost:9090/${db.name};MVCC=TRUE</jdbc.url>-->
                 <jdbc.username>sa</jdbc.username>
             </properties>
         </profile>

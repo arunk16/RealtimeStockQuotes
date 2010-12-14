@@ -62,6 +62,12 @@ public class StockServiceImplTest {
 		stockServiceImpl.getQuote(ticker);
 	}
 	
+	@Test(expected=InvalidTickerException.class)
+	public void testGetQuoteForNullTickerSymbol() throws Exception{
+		final String ticker = null;	
+		stockServiceImpl.getQuote(ticker);
+	}
+	
 	@Test
 	public void testShowAllQuotesFromDBStore(){
 		expect(stockManager.getStockQuotes()).andReturn(new ArrayList<Stock>());

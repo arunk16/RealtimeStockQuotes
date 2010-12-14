@@ -33,7 +33,7 @@ public class YahooStockPriceFetcher extends StockPriceFetcherFactory{
     
     public StockPriceVO findStockPrice(String tickerSymbol) throws InvalidTickerException,StockServiceException {
         if(tickerSymbol == null)
-          return null;
+        	 throw new InvalidTickerException();
         String rawOutput = null;
         try {
             //String yahooUrl = "http://finance.yahoo.com/d/quotes.csv?s=MSFT&f=sb2b3";
