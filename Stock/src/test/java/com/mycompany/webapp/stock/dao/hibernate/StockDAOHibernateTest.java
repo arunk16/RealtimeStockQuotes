@@ -1,6 +1,6 @@
 package com.mycompany.webapp.stock.dao.hibernate;
 
-import static org.junit.Assert.assertNotNull;
+
 
 import java.util.Date;
 
