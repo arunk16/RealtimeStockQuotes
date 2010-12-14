@@ -34,7 +34,7 @@ public class StockDAOHibernateTest extends BaseDaoTestCase{
 		stock.setQuotePrice(quote);
 		//save the stock quote
 		stock = stockDao.save(stock);		
-		
+		//get the stock using PK
 		Stock returnObj = stockDao.get(stock.getStockId());
 		
 		assertNotNull(returnObj);
