@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Temporal;
 import org.appfuse.model.BaseObject;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -80,8 +81,26 @@ public class Stock extends BaseObject{
     }
 
     @Override
-    public boolean equals(Object o) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public boolean equals(Object stock) {
+    	if (this == stock) {
+            return true;
+        }
+
+        if (!(stock instanceof Stock)) {
+            return false;
+        }
+
+        Stock other = (Stock) stock;
+
+        if (getStockTicker() == null) {
+            if (other.getStockTicker() != null) {
+                return false;
+            }
+        } else if (!getStockTicker().equals(other.getStockTicker())) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override

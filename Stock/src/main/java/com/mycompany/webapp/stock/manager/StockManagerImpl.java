@@ -6,20 +6,25 @@ import java.util.List;
 
 import org.appfuse.service.impl.GenericManagerImpl;
 
+import com.mycompany.webapp.stock.dao.StockDAO;
 import com.mycompany.webapp.stock.domain.Stock;
 
-public class StockManagerImpl extends GenericManagerImpl<Stock, Serializable> implements StockManager{
+public class StockManagerImpl extends GenericManagerImpl<Stock, Long> implements StockManager{
 	
-
+	StockDAO stockDAO;
 	
-	public List<Stock> getStockQuotes() {
-		// TODO Auto-generated method stub
-		return null;
+	public StockManagerImpl(StockDAO stockDAO){
+		super(stockDAO);
+		this.stockDAO = stockDAO;
 	}
 
-	public Stock saveStockQuote(Stock stock) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public List<Stock> getStockQuotes() {		
+		return stockDAO.getAll();
+	}
+
+	public Stock saveStockQuote(Stock stock) {		
+		return stockDAO.save(stock);
 	}
 
 }

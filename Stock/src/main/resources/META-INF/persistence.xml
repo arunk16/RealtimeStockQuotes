@@ -5,6 +5,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>org.appfuse.model.User</class>
         <class>org.appfuse.model.Role</class>
+        <class>com.mycompany.webapp.stock.domain.Stock</class>
     </persistence-unit>
 
     <!-- WARNING: This file's file original source is at web/common/src/main/resources/META-INF. The

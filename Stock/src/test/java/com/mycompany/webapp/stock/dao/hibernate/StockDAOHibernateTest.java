@@ -2,7 +2,10 @@ package com.mycompany.webapp.stock.dao.hibernate;
 
 import java.util.Date;
 
+import javax.annotation.Resource;
+
 import org.apache.log4j.Logger;
+import org.appfuse.dao.BaseDaoTestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +16,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mycompany.webapp.stock.dao.StockDAO;
 import com.mycompany.webapp.stock.domain.Stock;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath*:applicationContext-test.xml" })
-@Transactional
-public class StockDAOHibernateTest {
+
+public class StockDAOHibernateTest extends BaseDaoTestCase{
 	
-	private Logger log = Logger.getLogger(StockDAOHibernateTest.class);
+	private Logger log = Logger.getLogger(StockDAOHibernateTest.class);	
 	
 	@Autowired
-	private StockDAO stockDAO;
+	private StockDAO stockDao;
 	
 	@Test
 	public void testSaveAndGet(){
@@ -33,7 +34,7 @@ public class StockDAOHibernateTest {
 		stock.setLastUpdatedDate(new Date());
 		stock.setQuotePrice(quote);
 		//save the stock quote
-		stockDAO.save(stock);	
+		stockDao.save(stock);	
 		
 	}
 	
