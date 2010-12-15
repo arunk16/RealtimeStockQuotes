@@ -62,6 +62,15 @@
                   <arg0 key="address.province"/>
               </field>
       </form>
+      
+      <form name="stockForm">
+              <field property="stockTicker"
+                     depends="required">
+
+                  <arg0 key="stockTicker"/>
+              </field>             
+      </form>
+      
       <form name="user">
               <field property="username"
                      depends="required">

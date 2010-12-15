@@ -26,4 +26,6 @@
 	<bean id="stockManager" class="com.mycompany.webapp.stock.manager.StockManagerImpl">     
     	<constructor-arg ref="stockDao"/> 
 	</bean>
+	
+	<bean id="stockService" class="com.mycompany.webapp.stock.service.StockServiceImpl" />
 </beans>

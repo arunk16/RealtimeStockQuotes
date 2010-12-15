@@ -32,7 +32,7 @@ public class YahooStockPriceFetcher extends StockPriceFetcherFactory{
     }
     
     public StockPriceVO findStockPrice(String tickerSymbol) throws InvalidTickerException,StockServiceException {
-        if(tickerSymbol == null)
+        if(tickerSymbol == null || tickerSymbol != null && tickerSymbol.trim().equals(""))
         	 throw new InvalidTickerException();
         String rawOutput = null;
         try {
@@ -63,10 +63,7 @@ public class YahooStockPriceFetcher extends StockPriceFetcherFactory{
         final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         conn.setDoOutput(true);
-        //conn.setDoInput(true);
-        //conn.setRequestMethod("POST");
-        //conn.setRequestProperty("Content-Type", "/";
-        //conn.setRequestProperty("SOAPAction", GET_REQUEST);
+        
 
         final Writer writer = new OutputStreamWriter(conn.getOutputStream());
         writer.write(data);
@@ -107,7 +104,7 @@ public class YahooStockPriceFetcher extends StockPriceFetcherFactory{
     }
 
     private Double prepareQuote(Double askPrice,Double bidPrice){
-        return (bidPrice + (askPrice - bidPrice)/2);
+        return ((bidPrice) + ((askPrice - bidPrice)/2));
     }    
 
 }

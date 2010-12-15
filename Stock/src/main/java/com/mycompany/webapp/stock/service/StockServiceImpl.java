@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.mycompany.webapp.stock.common.vo.StockPriceVO;
 import com.mycompany.webapp.stock.domain.Stock;
 import com.mycompany.webapp.stock.exceptions.InvalidTickerException;
@@ -30,6 +32,7 @@ public class StockServiceImpl implements StockService {
 	 */
 	private StockManager stockManager;
 	
+	@Autowired
 	public void setStockManager(StockManager stockManager){
 		this.stockManager = stockManager;
 	}
