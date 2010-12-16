@@ -15,7 +15,7 @@
     <display:column property="stockTicker" escapeXml="true" sortable="true" titleKey="stock.ticker" style="width: 25%"/>
     <display:column property="quote" escapeXml="true" sortable="true" titleKey="stock.quote" style="width: 25%"/>
     <display:column property="createdDate" sortable="true" titleKey="stock.created.date" style="width: 25%"/>
-    <display:column property="lastUpdatedDate" titleKey="stock.last.updated.date" />    
+    <display:column property="lastUpdatedDate" sortable="true" titleKey="stock.last.updated.date" />    
 </display:table>
 
 

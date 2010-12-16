@@ -13,8 +13,11 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -58,11 +61,12 @@ public class YahooStockPriceFetcher extends StockPriceFetcherFactory{
         // Construct data
         String data = URLEncoder.encode("s", "UTF-8") + "=" + URLEncoder.encode(tickerSymbol, "UTF-8");
         data += "&" + URLEncoder.encode("f", "UTF-8") + "=" + URLEncoder.encode("sb2b3", "UTF-8");
-
+        
+       
         final URL url = new URL(yahooUrl+data);
         final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-        conn.setDoOutput(true);
+        conn.setDoOutput(true);  
         
 
         final Writer writer = new OutputStreamWriter(conn.getOutputStream());
@@ -104,7 +108,8 @@ public class YahooStockPriceFetcher extends StockPriceFetcherFactory{
     }
 
     private Double prepareQuote(Double askPrice,Double bidPrice){
-        return ((bidPrice) + ((askPrice - bidPrice)/2));
+    	DecimalFormat twoDForm = new DecimalFormat("#.##");
+		return Double.valueOf(twoDForm.format(((bidPrice) + ((askPrice - bidPrice)/2))));        
     }    
 
 }

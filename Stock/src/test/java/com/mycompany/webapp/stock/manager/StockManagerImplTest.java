@@ -66,9 +66,12 @@ public class StockManagerImplTest {
 	
 	@Test
 	public void testSaveStockQuote(){
+		String ticker = "MSFT";
 		Stock stock1 = new Stock();
-		stock1.setStockTicker("MSFT");
+		stock1.setStockTicker(ticker);
 		stock1.setQuotePrice(new Double(12.45));
+		
+		expect(stockDAO.findByTickerSymbol(ticker)).andReturn(new ArrayList<Stock>());
 		
 		expect(stockDAO.save(stock1)).andReturn(stock1);
 		replay(stockDAO);

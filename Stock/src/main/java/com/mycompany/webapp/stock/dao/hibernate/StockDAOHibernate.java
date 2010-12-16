@@ -10,22 +10,15 @@ import org.springframework.stereotype.Repository;
 import com.mycompany.webapp.stock.dao.StockDAO;
 import com.mycompany.webapp.stock.domain.Stock;
 
-@Repository
+@Repository("StockDao")
 public class StockDAOHibernate extends GenericDaoHibernate<Stock, Long> implements StockDAO{ 
 
 	public StockDAOHibernate() {
-		super(Stock.class);
-		// TODO Auto-generated constructor stub
+		super(Stock.class);		
 	}
-//
-//	public List<Stock> getStockQuotes() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	public void saveStockQuote(Stock stock) {
-//		// TODO Auto-generated method stub
-//		getHibernateTemplate().saveOrUpdate(stock);
-//	}	
 
+	public List<Stock> findByTickerSymbol(String ticker) {
+		return  getHibernateTemplate().find("from Stock where stockTicker=?", ticker);
+
+	}
 }

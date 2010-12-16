@@ -57,7 +57,7 @@ public class Stock extends BaseObject{
         this.lastUpdatedDate = lastUpdatedDate;
     }
 
-    @Column(name="stock_ticker", length=10)
+    @Column(name="stock_ticker", length=10, unique=true)
     public String getStockTicker() {
         return stockTicker;
     }
@@ -77,7 +77,9 @@ public class Stock extends BaseObject{
 
 	@Override
     public String toString() {
-        throw new UnsupportedOperationException("Not supported yet.");
+       String output = "Stock ticker : " + getStockTicker() + "/n";
+       output += "Quote : " + getQuotePrice();
+       return output;
     }
 
     @Override

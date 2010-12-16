@@ -1,9 +1,11 @@
 package com.mycompany.webapp.stock.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mycompany.webapp.stock.common.vo.StockPriceVO;
@@ -21,6 +23,8 @@ import com.mycompany.webapp.stock.manager.StockManager;
  */
 
 public class StockServiceImpl implements StockService {
+	
+	private Logger log = Logger.getLogger(StockServiceImpl.class);
 	
 	/**
 	 * Factory method object always returns StockPriceVO object with stock quote related data.
@@ -80,8 +84,7 @@ public class StockServiceImpl implements StockService {
 		stock.setLastUpdatedDate(new Date());
 		stock.setCreatedDate(new Date());
 		return stock;
-	}
-	
+	}	
 	
 	/**
 	 * Helper method to convert stock objects from DB to VO objects 

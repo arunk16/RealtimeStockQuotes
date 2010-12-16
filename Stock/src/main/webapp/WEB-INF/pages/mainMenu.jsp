@@ -10,13 +10,7 @@
 
 <div class="separator"></div>
 
-<ul class="glassList">
-    <li>
-        <a href="<c:url value='/userform.html'/>"><fmt:message key="menu.user"/></a>
-    </li>
-    <li>
-        <a href="<c:url value='/fileupload.html'/>"><fmt:message key="menu.selectFile"/></a>
-    </li>
+<ul class="glassList">    
     <li>
         <a href="<c:url value='/stock.html'/>"><fmt:message key="stock.user.story"/></a>
     </li>

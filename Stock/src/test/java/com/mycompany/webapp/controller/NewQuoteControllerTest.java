@@ -7,12 +7,22 @@ import org.springframework.validation.DataBinder;
 
 import com.mycompany.webapp.stock.common.vo.StockPriceVO;
 
+/**
+ * controller level test.
+ * 
+ * @author arun
+ *
+ */
+
 public class NewQuoteControllerTest extends BaseControllerTestCase {
 	
 	private NewQuoteController c;
 	private MockHttpServletRequest request;
 	private StockPriceVO vo;
 	
+	public void setNewQuoteController(NewQuoteController form){
+		c = form;
+	}
 	
 	public void testCancel() throws Exception {
         log.debug("testing cancel...");

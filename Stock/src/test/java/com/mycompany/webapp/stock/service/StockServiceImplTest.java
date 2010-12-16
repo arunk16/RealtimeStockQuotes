@@ -19,6 +19,12 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.verify;
 
+/**
+ * Stock application main interface implementation under test here.
+ * 
+ * @author arun
+ *
+ */
 
 public class StockServiceImplTest {
 	

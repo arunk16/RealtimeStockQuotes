@@ -5,26 +5,36 @@
 
 package com.mycompany.webapp.stock.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
 import com.mycompany.webapp.stock.common.vo.StockPriceVO;
 import com.mycompany.webapp.stock.exceptions.InvalidTickerException;
-import junit.framework.TestCase;
 
 /**
+ *Core Yahoo service interaction calls are tested here.
  *
  * @author soundrapandian_a
  */
-public class YahooStockPriceFetcherTest extends TestCase {
+public class YahooStockPriceFetcherTest {
 
     private StockPriceFetcherFactory factory = null;
-
+    
+    @Before
     public void setUp(){
         factory = new YahooStockPriceFetcher();
     }
-
+    
+    @Test(expected=InvalidTickerException.class)
     public void testfindStockPriceForNull()throws Exception {
-        assertNull(factory.findStockPrice(null));
+        factory.findStockPrice(null);
     }
-
+    
+    @Test
     public void testFindStockPriceForValidTickerSymbol()throws Exception {
        final String ticker = "MSFT";
         StockPriceVO vo = factory.findStockPrice(ticker);
@@ -37,19 +47,10 @@ public class YahooStockPriceFetcherTest extends TestCase {
         assertNotNull(vo.getQuote());     
     }
     
-    /**
-     * Test to prove that wrong stock tickers will get invalidTickerException.
-     * May be simpler in junit4, could have done this using annotation @Test(expected=InvalidTickerException.class)
-     * @throws Exception
-     */
-    
+    @Test(expected=InvalidTickerException.class)
     public void testFindStockPriceForInvalidTickerSymbol()throws Exception {
-       final String ticker = "BLAH";
-        try {
-			StockPriceVO vo = factory.findStockPrice(ticker);
-		} catch (Exception e) {			
-			assertTrue(e instanceof InvalidTickerException );
-		}
+       final String ticker = "BLAH";       
+	   StockPriceVO vo = factory.findStockPrice(ticker);	
         
     }
 

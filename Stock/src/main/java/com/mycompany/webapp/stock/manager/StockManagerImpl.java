@@ -23,8 +23,18 @@ public class StockManagerImpl extends GenericManagerImpl<Stock, Long> implements
 		return stockDAO.getAll();
 	}
 
-	public Stock saveStockQuote(Stock stock) {		
+	public Stock saveStockQuote(Stock stock) {
+		List<Stock> list = stockDAO.findByTickerSymbol(stock.getStockTicker());
+		if(list == null || list != null && list.size() == 0){
+			//do nothing
+		}else{
+			//remove the old values from db.
+			for(Stock stock1 : list){
+				stockDAO.remove(stock1.getStockId());
+			}
+		}
 		return stockDAO.save(stock);
+		
 	}
 
 }
